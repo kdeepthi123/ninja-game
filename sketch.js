@@ -1,3 +1,4 @@
+var diamondScore=0,goldScore=0,crownScore=0;
 function preload(){
 
     jumpingAnimation = loadAnimation(
@@ -34,16 +35,36 @@ gameBackground1.scale=1.7
 redNinja=createSprite(150,height-20)
 redNinja.addAnimation('run',runningAnimation)
 redNinja.scale=0.45
-
+redNinja.debug=true
 ground=createSprite(width/2,height-20,2*width,20)
 //ground.visible=false
+redNinja.setCollider('rectangle',0,0,460,400)
+diamondGroup=new Group()
+goldGroup = new Group()
+cashGroup = new Group()
+crownGroup=new Group()
 }
 function draw(){
   gameBackground1.velocityX=-4
   if(gameBackground1.x<600){
     gameBackground1.x=width/2
   }
-
+ 
+  if(redNinja.isTouching(diamondGroup)){
+    diamondScore+=diamondGroup.length
+    diamondGroup.destroyEach() 
+   
+  }
+  if(redNinja.isTouching(crownGroup)){
+    crownScore+=crownGroup.length
+    crownGroup.destroyEach();
+    
+  }
+  if(redNinja.isTouching(goldGroup)){
+    goldScore+=goldGroup.length
+    goldGroup.destroyEach() 
+    
+    } 
   if(keyDown('space')){
     redNinja.velocityY=-5
   }
@@ -54,6 +75,16 @@ function draw(){
   redNinja.collide(ground)
   getTreasure()
 drawSprites();
+image(diamond,width-200,50,40,40)
+image(gold,width-200,100,40,40)
+image(crown,width-200,150,40,40)
+textSize(30)
+fill("white")
+stroke('lime')
+strokeWeight(5)
+text(diamondScore,width-100,80)
+text(goldScore,width-100,130)
+text(crownScore,width-100,180)
 }
 
 function showGun(){
@@ -64,23 +95,24 @@ gun1.scale=.05
 }
 
 function getTreasure(){
-if(frameCount%100===0){
+if(frameCount%120===0){
   treasure=createSprite(width,random(50,height/2))
- myrand=Math.round(random(1,4))
+ myrand=Math.round(random(1,3))
  treasure.velocityX=-4
  switch (myrand) {
    case 1:
      treasure.addImage(gold)
+     goldGroup.add(treasure)
      break;
      case 2:
       treasure.addImage(crown)
+      crownGroup.add(treasure)
       break;
       case 3:
      treasure.addImage(diamond)
+     diamondGroup.add(treasure)
      break;
-     case 4:
-     treasure.addImage(cash)
-     break;
+    
    default:
      break;
  }
