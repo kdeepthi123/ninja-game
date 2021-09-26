@@ -30,7 +30,7 @@ function setup(){
 createCanvas(windowWidth,windowHeight);
 gameBackground1=createSprite(width/2,height/2)
 gameBackground1.addImage(gameBackground)
-gameBackground1.scale=1
+gameBackground1.scale=0.7
 
 redNinja=createSprite(150,height-20)
 redNinja.addAnimation('run',runningAnimation)
