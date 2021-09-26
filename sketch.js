@@ -14,7 +14,7 @@ function preload(){
         'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/jump09.png'    
       );
       runningAnimation = loadAnimation('ninja1.png','ninja2.png','ninja3.png','ninja4.png','ninja5.png');
-      gameBackground = loadImage('https://la-wit.github.io/build-an-infinite-runner/build/images/environments/industrialBackground.png');
+      gameBackground = loadImage('https://cdna.artstation.com/p/assets/images/images/011/392/020/large/pk-olson-ggc-bg-small.jpg?1581840934');
 platformBackground = loadImage('https://la-wit.github.io/build-an-infinite-runner/build/images/environments/industrialPlatform.png');
 gameFont = loadFont('https://la-wit.github.io/build-an-infinite-runner/build/fonts/ARCADE_R.TTF');
 gameMusic = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/generic-game-loop-4.mp3');
